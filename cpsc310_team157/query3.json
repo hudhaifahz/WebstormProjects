@@ -1,0 +1,62 @@
+{
+  "WHERE": {
+    "OR":[{
+      "AND":[{
+        "GT":{
+          "rooms_seats":100
+        }},{"OR":
+      [{"LT":{
+        "rooms_lat": 40
+      }
+      },{
+        "IS":{
+          "rooms_name":"*AN*"
+        }
+      },{
+        "AND":[{
+          "IS":{
+            "rooms_href":"*AN*"
+          }
+        },{
+          "EQ":{
+            "rooms_seats": 54
+          }
+        }
+        ]}]},{
+        "NOT":{
+          "NOT":{
+            "AND":[{
+              "LT":{
+                "rooms_lon":200
+              }
+            },{
+              "GT":{
+                "rooms_lon":-200
+              }
+            },{
+              "NOT":{
+                "IS":{
+                  "rooms_address": "*grono*"
+                }
+              }
+            }]
+          }
+        }
+      }
+      ]},{"EQ":{
+      "rooms_seats":54
+    }},{
+      "NOT":{
+        "IS":{
+          "rooms_furniture":"Classroom-Movable Tables & Chairs"
+        }
+      }
+    }]
+  },
+  "OPTIONS":{
+    "COLUMNS":[
+      "rooms_name"
+    ],
+    "ORDER": "rooms_name"
+  }
+}

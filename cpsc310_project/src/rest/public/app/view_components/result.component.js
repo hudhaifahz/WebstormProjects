@@ -1,0 +1,56 @@
+"use strict";
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const core_1 = require("@angular/core");
+let ResultComponent = class ResultComponent {
+    visibleColumns() {
+        return this.columns.filter((item) => {
+            return item.value;
+        }).map((item) => {
+            return item.name;
+        });
+    }
+};
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Object)
+], ResultComponent.prototype, "columns", void 0);
+__decorate([
+    core_1.Input(),
+    __metadata("design:type", Array)
+], ResultComponent.prototype, "results", void 0);
+ResultComponent = __decorate([
+    core_1.Component({
+        selector: 'query-results',
+        styles: [
+            'th { font-size: 13px; }',
+            'td { word-break: break-word; }'
+        ],
+        template: `
+<div class="row">
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th *ngFor="let column of visibleColumns();">{{column}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let result of results;">
+                <td *ngFor="let column of visibleColumns();">{{result[column]}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+`
+    })
+], ResultComponent);
+exports.ResultComponent = ResultComponent;
+//# sourceMappingURL=result.component.js.map
